@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { jexiaClient } from "jexia-sdk-js/browser";
+import vuetify from './plugins/vuetify';
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import '@mdi/font/css/materialdesignicons.css'
+import i18n from '@/plugins/i18n'
+
 
 const clientPromise = jexiaClient()
   .init({
@@ -22,5 +27,7 @@ clientPromise.then((/*client*/) => {
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  i18n,
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')

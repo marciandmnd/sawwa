@@ -1,28 +1,35 @@
+<style scoped>
+  button {
+    padding: 15px;
+    border: 1px solid green;
+    font-size: 18px;
+    margin: 15px;
+  }
+</style>
+
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-content>
+      <div id="locale-select">
+        <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
+          <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
+        </button>
+      </div>
+      <Layout/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Layout from './components/Layout';
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: 'App',
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    Layout,
+  },
+
+
+};
+</script>
