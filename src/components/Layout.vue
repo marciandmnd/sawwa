@@ -13,6 +13,22 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+         <v-list-item link @click="navigate('/login')">
+          <v-list-item-action>
+            <v-icon>mdi-login</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link @click="navigate('/register')">
+          <v-list-item-action>
+            <v-icon>mdi-account-circle</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Register</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item link @click="navigate('/contact')">
           <v-list-item-action>
             <v-icon>mdi-contact-mail</v-icon>
@@ -58,7 +74,11 @@
     </v-app-bar>
 
     <v-content>
-      <router-view></router-view>
+      <v-container>
+        <v-row>
+          <router-view></router-view>
+        </v-row>
+      </v-container>
     </v-content>
     <v-footer
       color="indigo"

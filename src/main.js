@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import Contact from './components/Contact.vue'
 import Main from './components/Main.vue'
+import Login from './views/Login.vue'
+import Register from './views/Register.vue'
 
 import { jexiaClient } from "jexia-sdk-js/browser";
 
@@ -15,7 +17,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 const routes = [
   { path: '/', component: Main},
-  { path: '/contact', component: Contact }
+  { path: '/contact', component: Contact },
+  { path: '/login', component: Login },
+  { path: '/register', component: Register }
 ]
 
 // 3. Create the router instance and pass the `routes` option
