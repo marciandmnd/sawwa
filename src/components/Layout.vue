@@ -13,6 +13,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <div v-if="!loggedIn">
          <v-list-item link @click="navigate('/login')">
           <v-list-item-action>
             <v-icon>mdi-login</v-icon>
@@ -29,6 +30,17 @@
             <v-list-item-title>Register</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        </div>
+        <div v-else>
+          <v-list-item link @click="logout">
+            <v-list-item-action>
+              <v-icon>mdi-exit-to-app</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
         <v-list-item link @click="navigate('/contact')">
           <v-list-item-action>
             <v-icon>mdi-contact-mail</v-icon>
@@ -75,8 +87,9 @@
 
     <v-content>
       <v-container>
+        <h1 v-if="loggedIn">Vue is awesome!</h1>
         <v-row>
-          <router-view></router-view>
+          <router-view @loginSuccess="() => this.loggedIn = true"></router-view>
         </v-row>
       </v-container>
     </v-content>
@@ -98,13 +111,21 @@
     },
     data: () => ({
       drawer: null,
+      loggedIn: localStorage.getItem('user'),
       languages: [
         { language: 'en', title: 'English' },
         { language: 'ar', title: 'Arabic' }
       ]
     }),
-
     methods: {
+      logout() {
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+
+        this.loggedIn = false
+
+        this.$router.push('/login')
+      },
       changeLocale(locale) {
         i18n.locale = locale;
       },

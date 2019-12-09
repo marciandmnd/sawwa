@@ -16,16 +16,13 @@
 </template>
 
 <script>
+  import Layout from './components/Layout';
 
-import Layout from './components/Layout';
+  export default {
+    name: 'App',
 
-export default {
-  name: 'App',
-
-  components: {
-    Layout,
-  },
-
-
-};
+    components: {
+      Layout,
+    },
+  };
 </script>
