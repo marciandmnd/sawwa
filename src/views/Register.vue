@@ -37,12 +37,11 @@
       methods: {
           async register() {
               var vm = this
-              const user = await this.$jexiaClient.modules[0].signUp({  
+              await this.$jexiaClient.modules[0].signUp({  
                 email: vm.email,  
                 password: vm.password  
               });
 
-              localStorage.setItem('user', user)
               vm.$emit('loginSuccess')
               vm.$router.push('/dashboard')
           }

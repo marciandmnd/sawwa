@@ -38,14 +38,10 @@
       async login() {
         var vm = this
 
-        const token = await vm.$jexiaClient.modules[0].signIn({  
+        await vm.$jexiaClient.modules[0].signIn({  
           email: vm.email,  
           password: vm.password
         })
-
-        localStorage.setItem('token', token)
-        const user = await vm.$jexiaClient.modules[0].getUser(vm.email)
-        localStorage.setItem('user', user)
 
         vm.$emit('loginSuccess')
         vm.$router.push('/dashboard')

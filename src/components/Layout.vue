@@ -87,7 +87,6 @@
 
     <v-content>
       <v-container>
-        <h1 v-if="loggedIn">Vue is awesome!</h1>
         <v-row>
           <router-view @loginSuccess="() => this.loggedIn = true"></router-view>
         </v-row>
@@ -111,7 +110,7 @@
     },
     data: () => ({
       drawer: null,
-      loggedIn: localStorage.getItem('user'),
+      loggedIn: localStorage.getItem('__jexia_tokens__'),
       languages: [
         { language: 'en', title: 'English' },
         { language: 'ar', title: 'Arabic' }
@@ -119,8 +118,8 @@
     }),
     methods: {
       logout() {
-        localStorage.removeItem('user')
-        localStorage.removeItem('token')
+        localStorage.removeItem('__jexia_tokens__')
+        localStorage.removeItem('__default_auth__')
 
         this.loggedIn = false
 
